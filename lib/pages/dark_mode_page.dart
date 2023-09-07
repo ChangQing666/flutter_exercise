@@ -16,8 +16,7 @@ class _DarkModePageState extends State<DarkModePage> {
     {"name": '开启', "mode": ThemeMode.dark},
     {"name": '关闭', "mode": ThemeMode.light},
   ];
-  var _currentTheme;
-
+  late Map<String, dynamic> _currentTheme;
   @override
   void initState() {
     super.initState();

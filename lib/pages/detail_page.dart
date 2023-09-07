@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/provider/count_provider.dart';
+import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
   final String id;
@@ -12,16 +14,33 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
-    print(widget.id);
+    debugPrint(widget.id);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    CountProvider countProvider = context.watch<CountProvider>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Detail page')),
-      body: Center(
-        child: Text('Detail page:${widget.id}'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text('Detail page:${widget.id}'),
+          ),
+          const Divider(),
+          Text('count:${countProvider.count}'),
+          ElevatedButton(
+              onPressed: () {
+                countProvider.decrement();
+                debugPrint(countProvider.count.toString());
+              },
+              child: const Text('减',
+                  style: TextStyle(fontSize: 20, color: Colors.white54)))
+        ],
       ),
     );
   }
