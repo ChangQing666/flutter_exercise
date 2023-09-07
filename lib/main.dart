@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:flutter_provider/provider/theme_provider.dart';
+import 'package:flutter_provider/provider/top_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_provider/routes/routers.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,28 +11,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Model_viewer Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Model Viewer')),
-        body: const ModelViewer(
-          backgroundColor: Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
-          // src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
-          src: 'assets/models/Astronaut.glb',
-          alt: 'A 3D model of an astronaut',
-          ar: true,
-          autoRotate: true,
-          iosSrc: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
-          disableZoom: true,
-        ),
-      ),
+    return MultiProvider(
+      providers: topProviders,
+      builder: (BuildContext context, Widget? child) {
+        return MaterialApp.router(
+          routerConfig: appRouter,
+          title: 'Flutter Provider',
+          theme: context.watch<ThemeProvider>().getTheme(),
+          darkTheme: context.watch<ThemeProvider>().getTheme(isDarkMode: true),
+          themeMode: context.watch<ThemeProvider>().getThemeMode(),
+        );
+      },
     );
   }
 }
