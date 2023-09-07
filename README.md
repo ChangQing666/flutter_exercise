@@ -1,4 +1,4 @@
-# flutter_application_model_view
+# flutter_exercise
 
 A new Flutter project.
 
