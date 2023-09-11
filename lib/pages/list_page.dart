@@ -46,7 +46,7 @@ class _ListPageState extends State<ListPage> {
           ),
           const Divider(),
           Text('数据：${countProvider.count}',
-              style: const TextStyle(fontSize: 50, color: Colors.black87)),
+              style: const TextStyle(fontSize: 50)),
           ElevatedButton(
               onPressed: () {
                 countProvider.increment();

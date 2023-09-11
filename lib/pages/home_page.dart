@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/common/color.dart';
 import 'package:flutter_provider/pages/my_page.dart';
 import 'package:flutter_provider/pages/recommend_page.dart';
 import 'package:go_router/go_router.dart';
@@ -36,22 +37,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        drawer: Drawer(
-          child: Column(children: [
-            UserAccountsDrawerHeader(
-                accountName: const Text('Flutter Provider'),
-                accountEmail: const Text('xlchang2016@163.com'),
-                currentAccountPicture: Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg')),
-            ListTile(
-              leading: const Icon(Icons.nightlight_round),
-              title: const Text('夜间模式'),
-              onTap: () {
-                context.pushNamed('dark_mode');
-              },
-            ),
-          ]),
-        ),
+        drawer: _drawer(context),
         bottomNavigationBar: _bottomNavigationBar(context),
         body: PageView(
           controller: _pageController,
@@ -64,6 +50,25 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
+  Drawer _drawer(BuildContext context) {
+    return Drawer(
+        child: Column(children: [
+          UserAccountsDrawerHeader(
+              accountName: const Text('Flutter Provider'),
+              accountEmail: const Text('xlchang2016@163.com'),
+              currentAccountPicture: Image.network(
+                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg')),
+          ListTile(
+            leading: const Icon(Icons.nightlight_round),
+            title: const Text('夜间模式'),
+            onTap: () {
+              context.pushNamed('dark_mode');
+            },
+          ),
+        ]),
+      );
+  }
+
   // _homeContent(context)
   Padding _homeContent(BuildContext context) {
     return Padding(
@@ -73,11 +78,11 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Text('Home page',
-              style: TextStyle(fontSize: 30, color: Colors.red)),
+              style: TextStyle(fontSize: 30, color: primaryColor)),
           ElevatedButton(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
-              backgroundColor: MaterialStateProperty.all(Colors.red),
+              backgroundColor: MaterialStateProperty.all(primaryColor),
             ),
             onPressed: () {
               context.pushNamed('dark_mode');
@@ -96,6 +101,30 @@ class _HomePageState extends State<HomePage> {
             },
             child: const Text('Go to detail page'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('city');
+            },
+            child: const Text('Go to City page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('future_provider');
+            },
+            child: const Text('Go to Future page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('stream_provider');
+            },
+            child: const Text('Go to stream page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('book_page');
+            },
+            child: const Text('Go to book_page page'),
+          ),
         ],
       ),
     );
@@ -110,7 +139,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: primaryColor,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(

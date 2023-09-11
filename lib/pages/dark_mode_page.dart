@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider/common/i_color.dart';
+import 'package:flutter_provider/common/color.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider/provider/theme_provider.dart';
 
@@ -21,11 +21,8 @@ class _DarkModePageState extends State<DarkModePage> {
   void initState() {
     super.initState();
     var themeMode = context.read<ThemeProvider>().getThemeMode();
-    for (var element in _items) {
-      if (element['mode'] == themeMode) {
-        _currentTheme = element;
-      }
-    }
+    _currentTheme =
+        _items.firstWhere((element) => element['mode'] == themeMode);
   }
 
   @override
@@ -57,7 +54,7 @@ class _DarkModePageState extends State<DarkModePage> {
             Expanded(child: Text(theme['name'] as String)),
             Opacity(
                 opacity: _currentTheme == theme ? 1 : 0,
-                child: const Icon(Icons.done, color: primary))
+                child: const Icon(Icons.done, color: primaryColor))
           ],
         ),
       ),
