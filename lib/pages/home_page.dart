@@ -20,17 +20,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = context.watch<ThemeProvider>();
-    IconData icon = themeProvider.isDark()
-        ? Icons.nightlight_round
-        : Icons.wb_sunny_rounded;
-
     return Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Provider'),
           actions: [
             IconButton(
-              icon: Icon(icon),
+              icon: Icon(context.watch<ThemeProvider>().isDark()
+                  ? Icons.nightlight_round
+                  : Icons.wb_sunny_rounded),
               onPressed: () {
                 context.pushNamed('dark_mode');
               },
@@ -52,21 +49,21 @@ class _HomePageState extends State<HomePage> {
 
   Drawer _drawer(BuildContext context) {
     return Drawer(
-        child: Column(children: [
-          UserAccountsDrawerHeader(
-              accountName: const Text('Flutter Provider'),
-              accountEmail: const Text('xlchang2016@163.com'),
-              currentAccountPicture: Image.network(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg')),
-          ListTile(
-            leading: const Icon(Icons.nightlight_round),
-            title: const Text('夜间模式'),
-            onTap: () {
-              context.pushNamed('dark_mode');
-            },
-          ),
-        ]),
-      );
+      child: Column(children: [
+        UserAccountsDrawerHeader(
+            accountName: const Text('Flutter Provider'),
+            accountEmail: const Text('xlchang2016@163.com'),
+            currentAccountPicture: Image.network(
+                'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg')),
+        ListTile(
+          leading: const Icon(Icons.nightlight_round),
+          title: const Text('夜间模式'),
+          onTap: () {
+            context.pushNamed('dark_mode');
+          },
+        ),
+      ]),
+    );
   }
 
   // _homeContent(context)
@@ -87,7 +84,33 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               context.pushNamed('dark_mode');
             },
-            child: const Text('Go to Dark page'),
+            child: const Text('Go to Dark_Mode page',
+                style: TextStyle(fontSize: 20)),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('book_page');
+            },
+            child: const Text('Go to book_page page',
+                style: TextStyle(fontSize: 20)),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('count_rebuild');
+            },
+            child: const Text('Go to count_rebuild page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('selector_rebuild');
+            },
+            child: const Text('Go to selector_rebuild page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.pushNamed('selector');
+            },
+            child: const Text('Go to selector page'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -118,12 +141,6 @@ class _HomePageState extends State<HomePage> {
               context.pushNamed('stream_provider');
             },
             child: const Text('Go to stream page'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.pushNamed('book_page');
-            },
-            child: const Text('Go to book_page page'),
           ),
         ],
       ),

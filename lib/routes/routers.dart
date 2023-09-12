@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/pages/book_page.dart';
+import 'package:flutter_provider/pages/count_rebuild_page.dart';
 import 'package:flutter_provider/pages/future_provider_page.dart';
+import 'package:flutter_provider/pages/selector_page.dart';
+import 'package:flutter_provider/pages/selector_rebuild_page.dart';
 import 'package:flutter_provider/pages/stream_provider_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_provider/pages/dark_mode_page.dart';
@@ -39,6 +42,27 @@ final GoRouter appRouter = GoRouter(
           },
         ),
       ],
+    ),
+    GoRoute(
+      name: 'count_rebuild',
+      path: '/count_rebuild',
+      builder: (BuildContext context, GoRouterState state) {
+        return const CountRebuildPage();
+      },
+    ),
+    GoRoute(
+      name: 'selector_rebuild',
+      path: '/selector_rebuild',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SelectorRebuildPage();
+      },
+    ),
+    GoRoute(
+      name: 'selector',
+      path: '/selector',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SelectorPage();
+      },
     ),
     GoRoute(
       name: 'list',

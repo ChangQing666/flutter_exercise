@@ -1,4 +1,6 @@
 import 'package:flutter_provider/provider/count_provider.dart';
+import 'package:flutter_provider/provider/selector_provider.dart';
+import 'package:flutter_provider/provider/selector_rebuild_provider.dart';
 import 'package:flutter_provider/provider/stream_provider.dart';
 import 'package:flutter_provider/provider/theme_provider.dart';
 import 'package:flutter_provider/provider/future_provider.dart';
@@ -18,6 +20,10 @@ List<SingleChildWidget> appProviders = [
     create: (_) => BookManagerModel(BookModel()),
     update: (_, bookModel, bookManagerModel) => BookManagerModel(bookModel),
   ),
+  // selector
+  ChangeNotifierProvider(create: (_) => UserModel()),
+  ChangeNotifierProvider(create: (_) => NumberProvider()),
+  // futureProvider
   FutureProvider<Person>(
       create: (_) {
         return Future.delayed(const Duration(seconds: 2),

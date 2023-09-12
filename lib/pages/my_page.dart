@@ -21,11 +21,13 @@ class _MyPageState extends State<MyPage> {
     return Scaffold(
         // appBar: AppBar(title: const Text('My page')),
         body: Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('My page', style: TextStyle(fontSize: 30)),
-        const SizedBox(height: 20),
+        const Padding(
+          padding: EdgeInsets.only(top: 20, left: 20),
+          child: Text('设置', style: TextStyle(fontSize: 18)),
+        ),
         ListTile(
           leading: Icon(darkModeIcon),
           title: const Text('夜间模式'),
@@ -35,17 +37,33 @@ class _MyPageState extends State<MyPage> {
           trailing: const Icon(Icons.navigate_next),
           shape:
               const Border(bottom: BorderSide(width: 1, color: Colors.black12)),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         ),
         ListTile(
-          leading: const Icon(Icons.vrpano),
-          title: const Text('3D model'),
+          leading: const Icon(Icons.info),
+          title: const Text('关于'),
           onTap: () {
-            context.pushNamed('model_view');
+            context.pushNamed('dark_mode');
           },
           trailing: const Icon(Icons.navigate_next),
           shape:
               const Border(bottom: BorderSide(width: 1, color: Colors.black12)),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         ),
+        const Padding(
+          padding: EdgeInsets.only(top: 20, left: 20),
+          child: Text('实验', style: TextStyle(fontSize: 18)),
+        ),
+        ListTile(
+            leading: const Icon(Icons.vrpano),
+            title: const Text('3D model'),
+            onTap: () {
+              context.pushNamed('model_view');
+            },
+            trailing: const Icon(Icons.navigate_next),
+            shape: const Border(
+                bottom: BorderSide(width: 1, color: Colors.black12)),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20)),
       ],
     ));
   }
