@@ -62,15 +62,32 @@ class ThemeProvider extends ChangeNotifier {
   //获取主题
   ThemeData getTheme({bool isDarkMode = false}) {
     var themeData = ThemeData(
-      brightness: isDarkMode ? Brightness.dark : Brightness.light,
-      primaryColor: isDarkMode ? IColor.darkBg : whiteColor,
-      //Tab指示器的颜色
-      indicatorColor: isDarkMode ? primaryColor : whiteColor,
-      //页面背景色
-      scaffoldBackgroundColor: isDarkMode ? IColor.darkBg : whiteColor,
-      // 分割线颜色
-      dividerColor: isDarkMode ? Colors.black38 : Colors.black12,
-    );
+        brightness: isDarkMode ? Brightness.dark : Brightness.light,
+        primaryColor: isDarkMode ? darkBgColor : whiteColor,
+        //Tab指示器的颜色
+        indicatorColor: isDarkMode ? primaryColor : whiteColor,
+        //页面背景色
+        scaffoldBackgroundColor: isDarkMode ? darkBgColor : whiteColor,
+        // 分割线颜色
+        dividerColor: isDarkMode ? Colors.black38 : Colors.black12,
+        // appBar主题
+        appBarTheme: AppBarTheme(
+          elevation: 3,
+          backgroundColor: isDarkMode ? dorangeColor600 : lorangeColor600,
+          iconTheme: const IconThemeData(
+            color: whiteColor,
+          ),
+          titleTextStyle: const TextStyle(
+            color: whiteColor,
+            fontSize: 18,
+          ),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: isDarkMode ? darkBgColor : whiteColor,
+          selectedItemColor: primaryColor,
+          unselectedItemColor: isDarkMode ? Colors.white54 : Colors.black54,
+          elevation: 0,
+        ));
     return themeData;
   }
 }

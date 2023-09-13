@@ -43,7 +43,7 @@ class _MyPageState extends State<MyPage> {
           leading: const Icon(Icons.info),
           title: const Text('关于'),
           onTap: () {
-            context.pushNamed('dark_mode');
+            context.pushNamed('intro_page');
           },
           trailing: const Icon(Icons.navigate_next),
           shape:

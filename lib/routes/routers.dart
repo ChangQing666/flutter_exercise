@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider/pages/book_page.dart';
 import 'package:flutter_provider/pages/count_rebuild_page.dart';
 import 'package:flutter_provider/pages/future_provider_page.dart';
+import 'package:flutter_provider/pages/intro_page.dart';
 import 'package:flutter_provider/pages/selector_page.dart';
 import 'package:flutter_provider/pages/selector_rebuild_page.dart';
 import 'package:flutter_provider/pages/stream_provider_page.dart';
@@ -111,10 +112,10 @@ final GoRouter appRouter = GoRouter(
           return const StreamProviderPage();
         }),
     GoRoute(
-        name: 'book_page',
-        path: '/book_page',
+        name: 'intro_page',
+        path: '/intro_page',
         builder: (BuildContext context, GoRouterState state) {
-          return const BookPage();
+          return const IntroPage();
         }),
   ],
 );
