@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
         drawer: _drawer(context),
         bottomNavigationBar: _bottomNavigationBar(context),
         body: PageView(
+          scrollDirection: Axis.horizontal,
           controller: _pageController,
           onPageChanged: (index) {
             setState(() {
@@ -54,26 +55,28 @@ class _HomePageState extends State<HomePage> {
   Padding _homeContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text('Home page',
-              style: TextStyle(fontSize: 30, color: primaryColor)),
-          ...navigateButtons(context),
-          ElevatedButton(
-            onPressed: () {
-              context.pushNamed('list', queryParameters: {'id': 'abcd'});
-            },
-            child: const Text('Go to List page'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.pushNamed('detail', pathParameters: {'id': '123'});
-            },
-            child: const Text('Go to detail page'),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Text('Home page',
+                style: TextStyle(fontSize: 30, color: primaryColor)),
+            ...navigateButtons(context),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('list', queryParameters: {'id': 'abcd'});
+              },
+              child: const Text('Go to List page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('detail', pathParameters: {'id': '123'});
+              },
+              child: const Text('Go to detail page'),
+            ),
+          ],
+        ),
       ),
     );
   }

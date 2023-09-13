@@ -82,6 +82,7 @@ class ThemeProvider extends ChangeNotifier {
             fontSize: 18,
           ),
         ),
+        // bottomNavigationBar主题配置
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: isDarkMode ? darkBgColor : whiteColor,
           selectedItemColor: primaryColor,

@@ -40,22 +40,24 @@ class _ModelViewPageState extends State<ModelViewPage> {
                   if (snapshot.hasError) {
                     return const Text('Error');
                   } else {
-                    return Positioned(
+                    return const Positioned(
                       top: 10,
                       left: 10,
                       child: Text(
                         '航天员',
                         style: TextStyle(
-                            color: context.read<ThemeProvider>().isDark()
-                                ? orangeColor
-                                : primaryColor,
+                            color: primaryColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                     );
                   }
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return Center(
+                      child: CircularProgressIndicator(
+                          color: context.read<ThemeProvider>().isDark()
+                              ? orangeColor
+                              : primaryColor));
                 }
               }),
         ],
