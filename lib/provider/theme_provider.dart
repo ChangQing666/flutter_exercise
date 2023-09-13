@@ -37,7 +37,7 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   //获取主题模式
-  ThemeMode getThemeMode() {
+  ThemeMode? getThemeMode() {
     String? theme = BzCache.getInstance().get(Constants.theme);
     switch (theme) {
       case 'Dark':
@@ -50,7 +50,7 @@ class ThemeProvider extends ChangeNotifier {
         _themeMode = ThemeMode.light;
         break;
     }
-    return _themeMode!;
+    return _themeMode;
   }
 
   //设置主题

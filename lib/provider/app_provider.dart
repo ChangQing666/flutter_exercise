@@ -1,19 +1,21 @@
-import 'package:flutter_provider/provider/count_provider.dart';
 import 'package:flutter_provider/provider/selector_provider.dart';
 import 'package:flutter_provider/provider/selector_rebuild_provider.dart';
 import 'package:flutter_provider/provider/stream_provider.dart';
 import 'package:flutter_provider/provider/theme_provider.dart';
 import 'package:flutter_provider/provider/future_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-
 import 'book_manager_model.dart';
 
+import 'package:provider/provider.dart';
+import 'package:flutter_provider/provider/count_provider.dart';
+
 List<SingleChildWidget> appProviders = [
-  // 主题provider
-  ChangeNotifierProvider(create: (_) => ThemeProvider()),
   // 计数器provider
   ChangeNotifierProvider(create: (_) => CountProvider()),
+  // 主题provider
+  ChangeNotifierProvider(create: (_) => ThemeProvider()),
+
+  
   // 书籍provider
   Provider(create: (_) => BookModel()),
   ChangeNotifierProxyProvider<BookModel, BookManagerModel>(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/provider/count_provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
@@ -13,12 +14,6 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   @override
-  void initState() {
-    debugPrint(widget.id);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     CountProvider countProvider = context.watch<CountProvider>();
 
@@ -26,20 +21,25 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(title: const Text('Detail page')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: Text('Detail page:${widget.id}'),
-          ),
-          const Divider(),
-          Text('count:${countProvider.count}'),
+          Text('数据:${countProvider.count}',
+              style: const TextStyle(fontSize: 50)),
           ElevatedButton(
               onPressed: () {
                 countProvider.decrement();
-                debugPrint(countProvider.count.toString());
               },
-              child: const Text('减',
-                  style: TextStyle(fontSize: 20, color: Colors.white54)))
+              child: const Text('减', style: TextStyle(fontSize: 30))),
+          const Divider(),
+          ElevatedButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: const Text('返回',
+                style: TextStyle(
+                  fontSize: 20,
+                )),
+          ),
+          // Text('Detail page:${widget.id}'),
         ],
       ),
     );

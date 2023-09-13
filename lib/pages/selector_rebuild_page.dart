@@ -10,8 +10,8 @@ class SelectorRebuildPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('SelectorRebuildPage')),
       floatingActionButton: floatingButtons(context),
-      body: selectorBody(),
       // body: consumerBody(),
+      body: selectorBody(),
     );
   }
 

@@ -14,6 +14,8 @@ class ModelViewPage extends StatefulWidget {
 class _ModelViewPageState extends State<ModelViewPage> {
   @override
   Widget build(BuildContext context) {
+    Color color =
+        context.read<ThemeProvider>().isDark() ? orangeColor : primaryColor;
     return Scaffold(
       appBar: AppBar(title: const Text('3D model')),
       body: Stack(
@@ -40,24 +42,20 @@ class _ModelViewPageState extends State<ModelViewPage> {
                   if (snapshot.hasError) {
                     return const Text('Error');
                   } else {
-                    return const Positioned(
+                    return Positioned(
                       top: 10,
                       left: 10,
                       child: Text(
                         '航天员',
                         style: TextStyle(
-                            color: primaryColor,
+                            color: color,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                     );
                   }
                 } else {
-                  return Center(
-                      child: CircularProgressIndicator(
-                          color: context.read<ThemeProvider>().isDark()
-                              ? orangeColor
-                              : primaryColor));
+                  return Center(child: CircularProgressIndicator(color: color));
                 }
               }),
         ],
