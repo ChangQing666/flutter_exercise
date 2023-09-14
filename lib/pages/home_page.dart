@@ -69,6 +69,9 @@ class _HomePageState extends State<HomePage> {
               },
               child: const Text('Go to List page'),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               onPressed: () {
                 context.pushNamed('detail', pathParameters: {'id': '123'});
@@ -90,15 +93,23 @@ class _HomePageState extends State<HomePage> {
       'city',
       'future_provider',
       'stream_provider'
-    ].map((e) => ElevatedButton(
-          style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-            backgroundColor: MaterialStateProperty.all(primaryColor),
-          ),
-          onPressed: () {
-            context.pushNamed(e);
-          },
-          child: Text('Go to $e page', style: const TextStyle(fontSize: 20)),
+    ].map((e) => Column(
+          children: [
+            ElevatedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+                backgroundColor: MaterialStateProperty.all(primaryColor),
+              ),
+              onPressed: () {
+                context.pushNamed(e);
+              },
+              child:
+                  Text('Go to $e page', style: const TextStyle(fontSize: 20)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
         ));
   }
 
